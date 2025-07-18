@@ -265,7 +265,7 @@ const PostMobile = () => {
         submitData.append("userId", user.id);
       }
 
-      console.log("Submitting form data to http://localhost:9999/api/listings/create");
+      
       
       // Log form data for debugging (excluding files)
       for (let pair of submitData.entries()) {

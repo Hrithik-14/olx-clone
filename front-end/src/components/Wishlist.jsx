@@ -3,12 +3,12 @@ import { Heart, Trash2, Loader, RefreshCw } from 'lucide-react';
 import Cookies from 'js-cookie';
 import api from '../Utils/Api';
 import { useNavigate } from 'react-router-dom';
-import Footer from './Footer';
 
 const Wishlist = () => {
   const [wishlistItems, setWishlistItems] = useState([]);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
+  const BASE_URL = api.defaults.baseURL
 
   const navigate = useNavigate()
 
@@ -34,9 +34,8 @@ const products = data.wishlist.products
       _id: product._id,
       title: product.title,
       price: product.price,
-      image: product.images?.[0]?.url
-        ? `http://localhost:9999${product.images[0].url}`
-        : 'https://via.placeholder.com/300'
+      image: `${BASE_URL}${product.images?.[0]?.url}`,
+
     };
   });
 

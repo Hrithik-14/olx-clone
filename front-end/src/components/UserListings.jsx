@@ -3,8 +3,9 @@ import axios from "axios";
 import { RefreshCw } from "lucide-react";
 import Footer from "./Footer";
 import { useNavigate } from "react-router-dom";
+import api from "../Utils/Api";
 
-const BASE_URL = "http://localhost:9999";
+const BASE_URL = api.defaults.baseURL
 
 const UserListings = () => {
   const [listings, setListings] = useState([]);

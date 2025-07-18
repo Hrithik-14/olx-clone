@@ -18,7 +18,7 @@ import {
 } from "lucide-react";
 import api from "../Utils/Api";
 import { useParams, useNavigate, Link } from "react-router-dom";
-import Footer from "./Footer";
+
 
 const ProductDetails = () => {
   const [product, setProduct] = useState(null);
@@ -28,6 +28,7 @@ const ProductDetails = () => {
   const [showContact, setShowContact] = useState(false);
   // const user = localStorage.getItem('user')
   // const userId = user.id
+  const BASE_URL = api.defaults.baseURL
 
   const user = JSON.parse(localStorage.getItem("user"));
   const userId = user?._id;
@@ -186,7 +187,7 @@ const ProductDetails = () => {
             <div className="relative mb-6 group">
               <div className="relative overflow-hidden rounded-2xl shadow-2xl">
                 <img
-                  src={`http://localhost:9999${product.images?.[currentImageIndex]?.url}`}
+                  src={`${BASE_URL}${product.images?.[currentImageIndex]?.url}`}
                   alt={product.title}
                   className="w-full h-[500px] object-contain transition-transform duration-300 group-hover:scale-105"
                 />
@@ -223,7 +224,7 @@ const ProductDetails = () => {
                     }`}
                   >
                     <img
-                      src={`http://localhost:9999${image.url}`}
+                      src={`${BASE_URL}${image.url}`}
                       alt={`Thumbnail ${index + 1}`}
                       className="w-full h-full object-contain"
                     />

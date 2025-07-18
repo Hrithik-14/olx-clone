@@ -16,6 +16,7 @@ const ProductList = () => {
   const [likedProducts, setLikedProducts] = useState({});
   const [cartProducts, setCartProducts] = useState({});
   const [showAuthModal, setShowAuthModal] = useState(false);
+  const BASE_URL = api.defaults.baseURL
 
    const { categoryName } = useParams();
 
@@ -273,7 +274,7 @@ const ProductList = () => {
               {/* Image */}
               <div className="relative h-56 overflow-hidden bg-gray-100">
                 <img
-                  src={`http://localhost:9999${product.images?.[0]?.url}`}
+                  src={`${BASE_URL}${product.images?.[0]?.url}`}
                   alt={product.title || 'Product'}
                   className="w-full h-full object-contain transition-transform duration-700 group-hover:scale-110"
                   onError={(e) => (e.target.src = '/fallback.jpg')}

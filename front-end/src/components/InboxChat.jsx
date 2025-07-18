@@ -3,7 +3,7 @@
 import { useState, useEffect, useRef } from "react";
 import { SendHorizontal } from "lucide-react";
 import api from "../Utils/Api";
-import socket from "../utils/Socket";
+import socket from "../Utils/Socket";
 
 const InboxChat = ({ senderId, receiverId }) => {
   const [message, setMessage] = useState("");

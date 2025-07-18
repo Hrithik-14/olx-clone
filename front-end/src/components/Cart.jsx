@@ -14,6 +14,7 @@ const Cart = () => {
   const navigate = useNavigate()
 
   const token = Cookies.get('token');
+  const BASE_URL = api.defaults.baseURL
 
   const fetchWishlist = async () => {
     try {
@@ -33,9 +34,10 @@ const Cart = () => {
             _id: product._id,
             title: product.title,
             price: product.price,
-            image: product.images?.[0]?.url
-              ? `http://localhost:9999${product.images[0].url}`
-              : 'https://via.placeholder.com/300'
+            
+            image: `${BASE_URL}${product.images?.[0]?.url}`,
+
+            
           };
         });
         setWishlistItems(products);

@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 import { useParams, useNavigate } from "react-router-dom";
-import axios from "axios";
+import api from "../Utils/Api";
 
 const EditListing = () => {
   const { listingId } = useParams();
@@ -30,7 +30,7 @@ const EditListing = () => {
     const fetchListing = async () => {
       try {
         const token = localStorage.getItem("token");
-        const res = await axios.get(`http://localhost:9999/api/listings/getlistings/${listingId}`, {
+        const res = await api.get(`/api/listings/getlistings/${listingId}`, {
           headers: {
             Authorization: `Bearer ${token}`,
           },
@@ -101,7 +101,7 @@ const EditListing = () => {
         data.append("images", file);
       });
 
-      await axios.put(`http://localhost:9999/api/listings/update/${listingId}`, data, {
+      await api.put(`/api/listings/update/${listingId}`, data, {
         headers: {
           Authorization: `Bearer ${token}`,
           "Content-Type": "multipart/form-data",
